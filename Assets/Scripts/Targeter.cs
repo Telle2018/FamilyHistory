@@ -24,7 +24,7 @@ public class Targeter : MonoBehaviour
             if (lastViewed && !debounce) {
                 
                 IInteractable interactable = lastViewed.GetComponent<IInteractable>();
-                if (interactable != null) {
+                if (interactable != null && interactable.CanInteract(gameState)) {
                     interactable.Interact(gameState);
                     interactPanel.SetActive(false);
                 }
