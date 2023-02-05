@@ -42,7 +42,7 @@ public class Targeter : MonoBehaviour
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         int layerMask = 1 << 6; // Layer 6
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, fwd, out hit, Mathf.Infinity, layerMask)) {
+        if (Physics.Raycast(transform.position, fwd, out hit, 10.0f, layerMask)) {
             Debug.DrawRay(transform.position, fwd, Color.green);
             if (hit.collider.gameObject != lastViewed) {
                 lastViewed = hit.collider.gameObject;

@@ -7,6 +7,8 @@ public class TextPanelController : MonoBehaviour, IInteractable
     public GameObject[] textPanels;
     public int triggerIndex;
     public int prevTrigIndex;
+    public GameObject triggerInteractable;
+
     int panelIndex;
     bool debounce;
     bool lookingAtPanels;
@@ -55,6 +57,10 @@ public class TextPanelController : MonoBehaviour, IInteractable
             debounce = true;
             lookingAtPanels = true;
             gameState.triggered[triggerIndex] = true;
+            if(triggerInteractable != null)
+            {
+                triggerInteractable.GetComponent<IInteractable>().Interact(gameState);
+            }
         }
     }
 
