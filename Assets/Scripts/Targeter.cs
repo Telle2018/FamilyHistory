@@ -20,13 +20,17 @@ public class Targeter : MonoBehaviour
 
         interactPanel.SetActive(false);
         debounce = false;
-        gameStart = true;
 
         foreach (GameObject textPanel in textPanels) {
             textPanel.SetActive(false);
         }
 
-        textPanels[panelIndex].SetActive(true);
+        if (textPanels.Length == 0) {
+            gameStart = false;
+        } else {
+            textPanels[panelIndex].SetActive(true);
+            gameStart = true;
+        }
     }
 
     void Update() {
