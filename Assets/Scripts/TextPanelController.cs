@@ -5,6 +5,8 @@ using UnityEngine;
 public class TextPanelController : MonoBehaviour, IInteractable
 {
     public GameObject[] textPanels;
+    public int triggerIndex;
+    public int prevTrigIndex;
     int panelIndex;
     bool debounce;
     bool lookingAtPanels;
@@ -15,6 +17,7 @@ public class TextPanelController : MonoBehaviour, IInteractable
         }
         panelIndex = 0;
         lookingAtPanels = false;
+        textPanels[0].transform.parent.gameObject.SetActive(true);
     }
 
     void Update()
@@ -51,6 +54,7 @@ public class TextPanelController : MonoBehaviour, IInteractable
             panelIndex = 0;
             debounce = true;
             lookingAtPanels = true;
+            gameState.triggered[triggerIndex] = true;
         }
     }
 
@@ -63,6 +67,6 @@ public class TextPanelController : MonoBehaviour, IInteractable
         }
     }
     public bool CanInteract(GameState gameState) {
-        return (!lookingAtPanels && panelIndex == 0);
+        return (!lookingAtPanels && panelIndex == 0 && gameState.triggered[prevTrigIndex]);
     }
 }
