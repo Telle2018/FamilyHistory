@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class FurnaceController : MonoBehaviour, IInteractable
+public class GameEndController : MonoBehaviour, IInteractable
 {
-    public float deltaX;
-    public float deltaY;
-    public float deltaZ;
-    public AudioSource sound;
-
     public bool CanInteract(GameState gameState)
     {
         throw new System.NotImplementedException();
@@ -16,16 +12,11 @@ public class FurnaceController : MonoBehaviour, IInteractable
 
     public void Interact(GameState gameState)
     {
-        transform.Translate(new Vector3(deltaX, deltaY, deltaZ));
-        if (sound != null)
-        {
-            sound.Play();
-        }
+        SceneManager.LoadScene(3);
     }
 
     public void Uninteract(GameState gameState)
     {
         throw new System.NotImplementedException();
     }
-
 }
