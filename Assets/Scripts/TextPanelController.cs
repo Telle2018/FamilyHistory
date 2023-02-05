@@ -66,6 +66,7 @@ public class TextPanelController : MonoBehaviour, IInteractable
     }
 
     public void Uninteract(GameState gameState) {
+        if (lookingAtPanels) {
         panelIndex = 0;
         lookingAtPanels = false;
         foreach (GameObject textPanel in textPanels)
@@ -75,6 +76,7 @@ public class TextPanelController : MonoBehaviour, IInteractable
         if (triggerUninteractable != null)
         {
             triggerUninteractable.GetComponent<IInteractable>().Interact(gameState);
+        }
         }
     }
     public bool CanInteract(GameState gameState) {
