@@ -4561,7 +4561,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9171218412023624569, guid: 859bf596f5c1b8d49ba016dab6204ce9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 859bf596f5c1b8d49ba016dab6204ce9, type: 3}
 --- !u!1 &2085210652 stripped
 GameObject:
@@ -4586,6 +4587,19 @@ MonoBehaviour:
   prevTrigIndex: 1
   triggerInteractable: {fileID: 0}
   triggerUninteractable: {fileID: 0}
+--- !u!65 &2085210658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085210652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0111771, y: 0.27983117, z: 0.89282244}
+  m_Center: {x: 0.05886078, y: 0.13113964, z: 0.17790976}
 --- !u!1001 &2115452631
 PrefabInstance:
   m_ObjectHideFlags: 0
