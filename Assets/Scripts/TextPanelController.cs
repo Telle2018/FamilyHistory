@@ -1,3 +1,10 @@
+/** Code is a bit of a mess -- standard "concept start simple and hacked up"
+
+Really works in one of two ways:
+- If triggerUninteractable is present, shows one panel of text, which is closed by looking away or a jump, and trigger is called
+- if not present, can handle multiple panels of text, and if triggerInteractable is set, triggers after first panel
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +58,19 @@ public class TextPanelController : MonoBehaviour, IInteractable
 
 
     public void Interact(GameState gameState) {
+        if (triggerUninteractable) {
+            
+            if (lookingAtPanels) {
+                CompleteUninteract(gameState);
+                triggerUninteractable=null;
+            } else {
+                textPanels[0].SetActive(true);
+                panelIndex = 0;
+                debounce = true;
+                lookingAtPanels = true;
+                gameState.triggered[triggerIndex] = true;
+            }
+        } else
         if (!lookingAtPanels && panelIndex==0)
         {
             textPanels[0].SetActive(true);
@@ -67,6 +87,12 @@ public class TextPanelController : MonoBehaviour, IInteractable
 
     public void Uninteract(GameState gameState) {
         if (lookingAtPanels) {
+            CompleteUninteract(gameState);
+        }
+    }
+
+    void CompleteUninteract(GameState gameState) {
+        Debug.Log("In complete uninteract");
         panelIndex = 0;
         lookingAtPanels = false;
         foreach (GameObject textPanel in textPanels)
@@ -77,9 +103,11 @@ public class TextPanelController : MonoBehaviour, IInteractable
         {
             triggerUninteractable.GetComponent<IInteractable>().Interact(gameState);
         }
-        }
     }
     public bool CanInteract(GameState gameState) {
+        if (triggerUninteractable) {
+            return gameState.triggered[prevTrigIndex];
+        }
         return (!lookingAtPanels && panelIndex == 0 && gameState.triggered[prevTrigIndex]);
     }
 
