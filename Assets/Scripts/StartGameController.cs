@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartGameController : MonoBehaviour
 {
     public GameObject creditsPanel;
+    public GameObject titlePanel;
 
     public void LoadLevel()
     {
@@ -15,5 +16,6 @@ public class StartGameController : MonoBehaviour
     public void ShowCredits(bool show)
     {
         creditsPanel.SetActive(show);
+        titlePanel.SetActive(!show);
     }
 }
