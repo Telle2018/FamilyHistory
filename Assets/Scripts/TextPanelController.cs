@@ -92,7 +92,6 @@ public class TextPanelController : MonoBehaviour, IInteractable
     }
 
     void CompleteUninteract(GameState gameState) {
-        Debug.Log("In complete uninteract");
         panelIndex = 0;
         lookingAtPanels = false;
         foreach (GameObject textPanel in textPanels)
