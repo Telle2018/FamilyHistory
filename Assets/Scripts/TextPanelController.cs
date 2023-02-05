@@ -25,7 +25,7 @@ public class TextPanelController : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (Input.GetButton("Jump") && lookingAtPanels && panelIndex<textPanels.Length)
+        if (Input.GetButton("Jump") && lookingAtPanels && panelIndex<textPanels.Length && triggerUninteractable == null)
         {
             if (!debounce)
             {
